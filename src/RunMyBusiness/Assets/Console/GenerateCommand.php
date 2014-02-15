@@ -77,7 +77,7 @@ class GenerateCommand extends Command
     {
         $env = $this->option('env') ? $this->option('env').'/' : '';
         try {
-            $path = $this->laravel['path']."/config/packages/runmybusiness/simpleassets/{$env}config.php";
+            $path = $this->laravel['path']."/config/{$env}simpleassets.php";
             $contents = $this->files->get($path);
             return array($path, $contents);
         } catch (FileNotFoundException $e) {
