@@ -1,4 +1,4 @@
-<?php namespace Spekkionu\Assetcachebuster\Facades;
+<?php namespace RunMyBusiness\Assets\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
