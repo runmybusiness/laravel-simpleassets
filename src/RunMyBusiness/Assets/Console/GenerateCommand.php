@@ -54,7 +54,9 @@ class GenerateCommand extends Command
             return;
         }
 
-        $hash = $this->generateHash();
+        $hash_input = $this->option('hash') ?: null;
+
+        $hash = $this->generateHash($hash);
 
         $contents = $this->replaceHash($hash, $contents);
 
@@ -110,5 +112,17 @@ class GenerateCommand extends Command
             throw new \Exception("Could not find current hash key in config file.");
         }
         return $content;
+    }
+
+    /**
+     * Get the console command options.
+     *
+     * @return array
+     */
+    protected function getOptions()
+    {
+        return array(
+           array('hash', null, InputOption::VALUE_OPTIONAL, 'String to base hash off of, useful for deploying to multiple machines instead of generating multiple hashes.'),
+        );
     }
 }

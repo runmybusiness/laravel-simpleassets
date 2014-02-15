@@ -124,8 +124,13 @@ class Simpleassets
      *
      * @return string
      */
-    public static function generateHash()
+    public static function generateHash($data = null)
     {
-        return \md5(\time());
+        if(is_null($data))
+        {
+            $data = \time();
+        }
+
+        return \md5($data);
     }
 }

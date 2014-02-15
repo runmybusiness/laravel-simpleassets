@@ -86,4 +86,12 @@ class SimpleassetsTest extends PHPUnit_Framework_TestCase
         $hash = Simpleassets::generateHash();
         $this->assertEquals(32, strlen($hash));
     }
+
+    public function getGenerateHashWithInput()
+    {
+        $hash = Simpleassets::generateHash('test-input');
+        $this->assertEquals(32, strlen($hash));
+
+        $this->assertEquals('b5f7f2b3e491718deb69195be3284b1b', $hash);
+    }
 }
