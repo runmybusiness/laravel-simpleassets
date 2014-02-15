@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "RunMyBusiness\\Assets": "src/RunMyBusiness/Assets/"
+            "RunMyBusiness\\Assets\\": "src/RunMyBusiness/Assets/"
         }
     },
     "minimum-stability": "dev"
