@@ -1,11 +1,11 @@
-<?php namespace Spekkionu\Assetcachebuster\Tests;
+<?php namespace RunMyBusiness\Assets\Tests;
 
-use Spekkionu\Assetcachebuster\Assetcachebuster;
+use RunMyBusiness\Assets\SimpleAssets;
 use PHPUnit_Framework_TestCase;
 
-require_once(dirname(__DIR__) . '/src/Spekkionu/Assetcachebuster/Assetcachebuster.php');
+require_once(dirname(__DIR__) . '/src/RunMyBusiness/Assets/Simpleassets.php');
 
-class AssetcachebusterTest extends PHPUnit_Framework_TestCase
+class SimpleassetsTest extends PHPUnit_Framework_TestCase
 {
 
     public function testSimpleGeneration()
@@ -17,12 +17,12 @@ class AssetcachebusterTest extends PHPUnit_Framework_TestCase
             'cdn' => ''
         );
         $path = '/styles/styles.css';
-        $expected = "/{$options['hash']}{$path}";
-        $cachebuster = new Assetcachebuster($options);
+        $expected = "{$path}?{$options['hash']}";
+        $cachebuster = new Simpleassets($options);
         $this->assertEquals($expected, $cachebuster->url($path));
     }
 
-    public function testPrefixed()
+    public function testprefixed()
     {
         $options = array(
             'enable' => true,
@@ -31,8 +31,8 @@ class AssetcachebusterTest extends PHPUnit_Framework_TestCase
             'cdn' => ''
         );
         $path = '/styles/styles.css';
-        $expected = "/{$options['prefix']}/{$options['hash']}{$path}";
-        $cachebuster = new Assetcachebuster($options);
+        $expected = "/{$options['prefix']}{$path}?{$options['hash']}";
+        $cachebuster = new Simpleassets($options);
         $this->assertEquals($expected, $cachebuster->url($path));
 
     }
@@ -46,13 +46,13 @@ class AssetcachebusterTest extends PHPUnit_Framework_TestCase
             'cdn' => 'http://cdn.static.com'
         );
         $path = '/styles/styles.css';
-        $expected = "{$options['cdn']}/{$options['hash']}{$path}";
-        $cachebuster = new Assetcachebuster($options);
+        $expected = "{$options['cdn']}{$path}?{$options['hash']}";
+        $cachebuster = new Simpleassets($options);
         $this->assertEquals($expected, $cachebuster->url($path));
 
     }
 
-    public function testPrefixedCdn()
+    public function testprefixedCdn()
     {
         $options = array(
             'enable' => true,
@@ -61,8 +61,8 @@ class AssetcachebusterTest extends PHPUnit_Framework_TestCase
             'cdn' => 'http://cdn.static.com'
         );
         $path = '/styles/styles.css';
-        $expected = "{$options['cdn']}/{$options['prefix']}/{$options['hash']}{$path}";
-        $cachebuster = new Assetcachebuster($options);
+        $expected = "{$options['cdn']}/{$options['prefix']}{$path}?{$options['hash']}";
+        $cachebuster = new Simpleassets($options);
         $this->assertEquals($expected, $cachebuster->url($path));
 
     }
@@ -77,13 +77,13 @@ class AssetcachebusterTest extends PHPUnit_Framework_TestCase
         );
         $path = '/styles/styles.css';
         $expected = "{$options['cdn']}{$path}";
-        $cachebuster = new Assetcachebuster($options);
+        $cachebuster = new Simpleassets($options);
         $this->assertEquals($expected, $cachebuster->url($path));
     }
 
     public function getGenerateHash()
     {
-        $hash = Assetcachebuster::generateHash();
+        $hash = Simpleassets::generateHash();
         $this->assertEquals(32, strlen($hash));
     }
 }

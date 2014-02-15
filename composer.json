@@ -1,12 +1,12 @@
 {
-    "name": "spekkionu/assetcachebuster",
-    "description": "Prefixes asset urls with a unique hash which will allow invalidation of asset files cached by the browser.",
-    "keywords": ["assets", "cachebuster", "cache", "cdn", "laravel", "laravel-4"],
+    "name": "runmybusiness/laravel-simpleassets",
+    "description": "Suffixes assets with a query string to bust the browser cache.",
+    "keywords": ["assets", "cdn", "laravel", "laravel4"],
     "license": "MIT",
     "authors": [
         {
-            "name": "Jonathan Bernardi",
-            "email": "spekkionu@spekkionu.com"
+            "name": "Tom Schlick",
+            "email": "tom@runmybusiness.com"
         }
     ],
     "require": {
@@ -14,9 +14,9 @@
         "illuminate/support": "4.*"
     },
     "autoload": {
-        "psr-0": {
-            "Spekkionu\\Assetcachebuster\\": "src/"
+        "psr-4": {
+            "RunMyBusiness\\Assets": "src/RunMyBusiness/Assets/"
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "dev"
 }

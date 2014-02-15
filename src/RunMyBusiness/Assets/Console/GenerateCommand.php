@@ -1,10 +1,10 @@
-<?php namespace Spekkionu\Assetcachebuster\Console;
+<?php namespace RunMyBusiness\Assets\Console;
 
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Filesystem\FileNotFoundException;
-use Spekkionu\Assetcachebuster\Assetcachebuster as CacheBuster;
+use RunMyBusiness\Assets\Simpleassets as SimpleAssets;
 
 /**
  * Generates a new asset cache hash
@@ -16,7 +16,7 @@ class GenerateCommand extends Command
      *
      * @var string
      */
-    protected $name = 'assetcachebuster:generate';
+    protected $name = 'simpleassets:generate';
 
     /**
      * The console command description.
@@ -60,7 +60,7 @@ class GenerateCommand extends Command
 
         $this->files->put($path, $contents);
 
-        $this->laravel['config']['assetcachebuster::hash'] = $hash;
+        $this->laravel['config']['simpleassets::hash'] = $hash;
 
         $msg = "New hash {$hash} generated.";
         $this->info($msg);
@@ -75,14 +75,14 @@ class GenerateCommand extends Command
     {
         $env = $this->option('env') ? $this->option('env').'/' : '';
         try {
-            $path = $this->laravel['path']."/config/packages/spekkionu/assetcachebuster/{$env}config.php";
+            $path = $this->laravel['path']."/config/packages/runmybusiness/simpleassets/{$env}config.php";
             $contents = $this->files->get($path);
             return array($path, $contents);
         } catch (FileNotFoundException $e) {
-            $this->error("Assetcachebuster config file not found.");
+            $this->error("simpleassets config file not found.");
             $this->info("Did you publish the cache config?");
-            $this->info("Try running php artisan config:publish spekkionu/assetcachebuster ");
-            throw new \Exception("Assetcachebuster config file not found.");
+            $this->info("Try running php artisan config:publish runmybusiness/simpleassets ");
+            throw new \Exception("simpleassets config file not found.");
         }
     }
 
@@ -93,12 +93,12 @@ class GenerateCommand extends Command
      */
     protected function generateHash()
     {
-        return CacheBuster::generateHash();
+        return SimpleAssets::generateHash();
     }
 
     protected function replaceHash($hash, $content)
     {
-        $current = $this->laravel['config']['assetcachebuster::hash'];
+        $current = $this->laravel['config']['simpleassets::hash'];
         $content = preg_replace(
             "/([\'\"]hash[\'\"].+?[\'\"])(".preg_quote($current, '/').")([\'\"].*)/",
             "'hash' => '" . $hash . "',",

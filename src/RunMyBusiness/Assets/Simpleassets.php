@@ -1,8 +1,8 @@
-<?php namespace Spekkionu\Assetcachebuster;
+<?php namespace RunMyBusiness\Assets;
 
 use InvalidArgumentException;
 
-class Assetcachebuster
+class Simpleassets
 {
 
     /**
@@ -72,11 +72,11 @@ class Assetcachebuster
     public function setHash($hash)
     {
         if (!preg_match("/[0-9a-f]{32}/", $hash)) {
-            throw new InvalidArgumentException("Asset cache buster hash must be a valid md5 hash.");
+            throw new InvalidArgumentException("Hash must be a valid md5 hash.");
         }
         $hash = trim($hash, '/');
 
-        $this->hash = ($hash) ? trim($hash, '/') . '/' : '';
+        $this->hash = $hash;
     }
 
     /**
@@ -112,7 +112,7 @@ class Assetcachebuster
     {
         $path = trim($path, '/');
         if ($this->enabled) {
-            return $this->cdn . $this->prefix . $this->hash . $path;
+            return $this->cdn . $this->prefix  . $path . '?'. $this->hash;
         } else {
             return $this->cdn . $path;
         }

@@ -19,7 +19,7 @@
     </logging>
     <filter>
         <whitelist addUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">src/Spekkionu</directory>
+            <directory suffix=".php">src/RunMyBusiness</directory>
             <exclude>
                 <directory>vendor</directory>
                 <directory>tests</directory>

@@ -1,12 +1,9 @@
 language: php
 
-php: 
+php:
   - 5.3
   - 5.4
   - 5.5
-
-before_script:
-  - wget https://scrutinizer-ci.com/ocular.phar
 
 script: phpunit --configuration phpunit.travis.xml --coverage-text
 
