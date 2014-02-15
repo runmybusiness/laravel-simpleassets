@@ -1,9 +1,9 @@
 <?php namespace RunMyBusiness\Assets\Console;
 
-
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Filesystem\FileNotFoundException;
+use Symfony\Component\Console\Input\InputOption;
 use RunMyBusiness\Assets\Simpleassets as SimpleAssets;
 
 /**
