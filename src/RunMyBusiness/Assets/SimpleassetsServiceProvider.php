@@ -30,10 +30,10 @@ class SimpleassetsServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app['simpleassets'] = $this->app->share(function ($app) {
-            $options['enable'] = $this->app['config']->get('simpleassets::enable');
-            $options['hash'] = $this->app['config']->get('simpleassets::hash');
-            $options['cdn'] = $this->app['config']->get('simpleassets::cdn');
-            $options['suffix'] = $this->app['config']->get('simpleassets::suffix');
+            $options['enable'] = $this->app['config']->get('simpleassets.enable');
+            $options['hash'] = $this->app['config']->get('simpleassets.hash');
+            $options['cdn'] = $this->app['config']->get('simpleassets.cdn');
+            $options['prefix'] = $this->app['config']->get('simpleassets.prefix');
             return new Simpleassets($options);
         });
 
