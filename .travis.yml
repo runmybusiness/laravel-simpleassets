@@ -4,6 +4,12 @@ php:
   - 5.3
   - 5.4
   - 5.5
+  - 5.6
   - hhvm
+  - hhvm-nightly
 
 script: phpunit --configuration phpunit.travis.xml --coverage-text
+
+notifications:
+  hipchat:
+    - secure: "h3tSnZgVAgrXNadc90+zkLUkt/ZnDgkZg7f73liYWcnySndQRvi1bZg4tKUsCd6PqREVH03SEDGwdifGFOXXlsGZm1bix4n8WujmuQyjWHo0W9ad4UR4O75wmTCCsg9n/8jJjvYHG1d86lTEdqRpn525fWrmtZcTXVmKoW7B968="
