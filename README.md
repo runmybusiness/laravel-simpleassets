@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/runmybusiness/laravel-simpleassets.png?branch=master)](https://travis-ci.org/runmybusiness/laravel-simpleassets)
+[![StyleCI](https://styleci.io/repos/16866381/shield)](https://styleci.io/repos/16866381)
 
 Simple Assets
 ==================
