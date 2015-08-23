@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/runmybusiness/laravel-simpleassets.png?branch=master)](https://travis-ci.org/runmybusiness/laravel-simpleassets)
 [![StyleCI](https://styleci.io/repos/16866381/shield)](https://styleci.io/repos/16866381)
-[![Latest Stable Version](https://poser.pugx.org/runmybusiness/initialcon/v/stable)](https://packagist.org/packages/runmybusiness/initialcon) [![Total Downloads](https://poser.pugx.org/runmybusiness/initialcon/downloads)](https://packagist.org/packages/runmybusiness/initialcon) [![Latest Unstable Version](https://poser.pugx.org/runmybusiness/initialcon/v/unstable)](https://packagist.org/packages/runmybusiness/initialcon) [![License](https://poser.pugx.org/runmybusiness/initialcon/license)](https://packagist.org/packages/runmybusiness/initialcon)
+[![Latest Stable Version](https://poser.pugx.org/runmybusiness/laravel-simpleassets/v/stable)](https://packagist.org/packages/runmybusiness/laravel-simpleassets) [![Total Downloads](https://poser.pugx.org/runmybusiness/laravel-simpleassets/downloads)](https://packagist.org/packages/runmybusiness/laravel-simpleassets) [![Latest Unstable Version](https://poser.pugx.org/runmybusiness/laravel-simpleassets/v/unstable)](https://packagist.org/packages/runmybusiness/laravel-simpleassets) [![License](https://poser.pugx.org/runmybusiness/laravel-simpleassets/license)](https://packagist.org/packages/runmybusiness/laravel-simpleassets)
 
 Simple Assets
 ==================
