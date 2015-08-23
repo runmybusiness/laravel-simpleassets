@@ -1,13 +1,15 @@
-<?php namespace RunMyBusiness\Assets\Console;
+<?php
+
+namespace RunMyBusiness\Assets\Console;
 
 use Illuminate\Console\Command;
-use Illuminate\Filesystem\Filesystem;
 use Illuminate\Filesystem\FileNotFoundException;
-use Symfony\Component\Console\Input\InputOption;
+use Illuminate\Filesystem\Filesystem;
 use RunMyBusiness\Assets\Simpleassets as SimpleAssets;
+use Symfony\Component\Console\Input\InputOption;
 
 /**
- * Generates a new asset cache hash
+ * Generates a new asset cache hash.
  */
 class GenerateCommand extends Command
 {
@@ -25,11 +27,11 @@ class GenerateCommand extends Command
      */
     protected $description = 'Generates a new asset hash';
 
-
     /**
      * Create a new key generator command.
      *
-     * @param  \Illuminate\Filesystem\Filesystem  $files
+     * @param \Illuminate\Filesystem\Filesystem $files
+     *
      * @return void
      */
     public function __construct(Filesystem $files)
@@ -79,12 +81,13 @@ class GenerateCommand extends Command
         try {
             $path = $this->laravel['path']."/config/{$env}simpleassets.php";
             $contents = $this->files->get($path);
-            return array($path, $contents);
+
+            return [$path, $contents];
         } catch (FileNotFoundException $e) {
-            $this->error("simpleassets config file not found.");
-            $this->info("Did you publish the cache config?");
-            $this->info("Try running php artisan config:publish runmybusiness/simpleassets ");
-            throw new \Exception("simpleassets config file not found.");
+            $this->error('simpleassets config file not found.');
+            $this->info('Did you publish the cache config?');
+            $this->info('Try running php artisan config:publish runmybusiness/simpleassets ');
+            throw new \Exception('simpleassets config file not found.');
         }
     }
 
@@ -103,14 +106,15 @@ class GenerateCommand extends Command
         $current = $this->laravel['config']['simpleassets::hash'];
         $content = preg_replace(
             "/([\'\"]hash[\'\"].+?[\'\"])(".preg_quote($current, '/').")([\'\"].*)/",
-            "'hash' => '" . $hash . "',",
+            "'hash' => '".$hash."',",
             $content,
             1,
             $count
         );
         if ($count != 1) {
-            throw new \Exception("Could not find current hash key in config file.");
+            throw new \Exception('Could not find current hash key in config file.');
         }
+
         return $content;
     }
 
@@ -121,8 +125,8 @@ class GenerateCommand extends Command
      */
     protected function getOptions()
     {
-        return array(
-           array('hash', null, InputOption::VALUE_OPTIONAL, 'String to base hash off of, useful for deploying to multiple machines instead of generating multiple hashes.'),
-        );
+        return [
+           ['hash', null, InputOption::VALUE_OPTIONAL, 'String to base hash off of, useful for deploying to multiple machines instead of generating multiple hashes.'],
+        ];
     }
 }

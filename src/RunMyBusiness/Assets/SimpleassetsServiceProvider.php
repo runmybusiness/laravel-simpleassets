@@ -1,10 +1,11 @@
-<?php namespace RunMyBusiness\Assets;
+<?php
+
+namespace RunMyBusiness\Assets;
 
 use Illuminate\Support\ServiceProvider;
 
 class SimpleassetsServiceProvider extends ServiceProvider
 {
-
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -34,6 +35,7 @@ class SimpleassetsServiceProvider extends ServiceProvider
             $options['hash'] = $this->app['config']->get('simpleassets.hash');
             $options['cdn'] = $this->app['config']->get('simpleassets.cdn');
             $options['prefix'] = $this->app['config']->get('simpleassets.prefix');
+
             return new Simpleassets($options);
         });
 
@@ -55,6 +57,6 @@ class SimpleassetsServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array('simpleassets', 'command.simpleassets.generate');
+        return ['simpleassets', 'command.simpleassets.generate'];
     }
 }
